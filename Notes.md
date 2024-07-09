@@ -8,3 +8,11 @@ npm create vite@latest PizzaClient --template react
 cd PizzaClient
 npm install
 ```
+
+### Design API
+
+Mock data using `json-server`
+
+```
+npx json-server --watch db.json --port 5100
+```
