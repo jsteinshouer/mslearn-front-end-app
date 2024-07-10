@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PizzaList from './PizzaList';
 
 const term = "Pizza";
+const apiBaseURL = "";
 
 function Pizza() {
   const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ function Pizza() {
     //   { id: 2, name: 'Pepperoni', description: 'Tomato sauce, mozzarella, and pepperoni' },
     //   { id: 3, name: 'Hawaiian', description: 'Tomato sauce, mozzarella, ham, and pineapple' },
     // ];
-    const response = await fetch("/pizzas");
+    const response = await fetch(`${apiBaseURL}/pizzas`);
     const pizzaData = await response.json();
 
     setData(pizzaData);
@@ -31,7 +32,7 @@ function Pizza() {
     setData([...data, newItem]);
     setMaxId(maxId + 1);
 
-    fetch("/pizzas", {
+    fetch(`${apiBaseURL}/pizzas`, {
         method: "POST",
         body: JSON.stringify(newItem)
     })
@@ -41,7 +42,7 @@ function Pizza() {
     // Simulate updating item on API
     const updatedData = data.map(pizza => pizza.id === item.id ? item : pizza);
     setData(updatedData);
-    fetch(`/pizzas/${item.id}`, {
+    fetch(`${apiBaseURL}/pizzas/${item.id}`, {
         method: "PUT",
         body: JSON.stringify({
             "name": item.name,
