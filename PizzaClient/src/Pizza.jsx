@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PizzaList from './PizzaList';
 
 const term = "Pizza";
+// const apiBaseURL = "https://vigilant-space-broccoli-pg6wv66rww36qgw-5100.app.github.dev";
 const apiBaseURL = "";
 
 function Pizza() {
@@ -19,7 +20,14 @@ function Pizza() {
     //   { id: 2, name: 'Pepperoni', description: 'Tomato sauce, mozzarella, and pepperoni' },
     //   { id: 3, name: 'Hawaiian', description: 'Tomato sauce, mozzarella, ham, and pineapple' },
     // ];
-    const response = await fetch(`${apiBaseURL}/pizzas`);
+    const response = await fetch(`${apiBaseURL}/pizzas`,{
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+        "Access-Control-Allow-Headers": "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control"
+      }
+    });
     const pizzaData = await response.json();
 
     setData(pizzaData);
@@ -34,6 +42,9 @@ function Pizza() {
 
     fetch(`${apiBaseURL}/pizzas`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(newItem)
     })
   };
@@ -44,6 +55,9 @@ function Pizza() {
     setData(updatedData);
     fetch(`${apiBaseURL}/pizzas/${item.id}`, {
         method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
             "name": item.name,
             "description": item.description
