@@ -14,5 +14,5 @@ npm install
 Mock data using `json-server`
 
 ```
-npx json-server --watch db.json --port 5100
+npx json-server --watch db.json --host 0.0.0.0 --port 5100
 ```

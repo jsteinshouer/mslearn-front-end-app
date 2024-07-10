@@ -16,9 +16,9 @@
       "description": "Tomato sauce, mozzarella, ham, and pineapple"
     },
     {
-      "id": 4,
       "name": "Buffalo Chicken",
-      "description": "Spicy!"
+      "description": "Spicy!!!",
+      "id": "4"
     }
   ]
 }

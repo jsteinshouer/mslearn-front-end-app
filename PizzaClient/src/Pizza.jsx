@@ -42,7 +42,7 @@ function Pizza() {
     const updatedData = data.map(pizza => pizza.id === item.id ? item : pizza);
     setData(updatedData);
     fetch(`/pizzas/${item.id}`, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
             "name": item.name,
             "description": item.description
